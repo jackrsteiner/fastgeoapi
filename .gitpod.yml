@@ -9,7 +9,7 @@ tasks:
       pip install uvicorn
       pip install -r requirements.txt
   - command: |
-      uvicorn main:app --reload
+      uvicorn main:db_api --reload
 
 ports:
   - port: 8000
