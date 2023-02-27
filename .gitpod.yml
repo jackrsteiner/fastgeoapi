@@ -3,14 +3,12 @@ image:
 
 tasks:
   - init: |
-      pyenv local 3.11
-      python3.11 -m pip install --upgrade pip
       python -m venv venv
       source venv/bin/activate
-      pip3 install uvicorn
-      pip3 install -r requirements.txt
+      pip install --upgrade pip
+      pip install uvicorn
+      pip install -r requirements.txt
   - command: |
-      source venv/bin/activate
       uvicorn main:app --reload
 
 ports:
