@@ -1,3 +1,6 @@
+image:
+  file: .github.Dockerfile
+
 tasks:
   - init: |
       pyenv local 3.11
