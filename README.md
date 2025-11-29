@@ -30,6 +30,7 @@ step 5 → wrapper-app (your deployable OGC Processes service)
 
 ## 🗺️ High-Level Architecture (Mermaid)
 
+```mermaid
 flowchart TD
 
     subgraph Common["Step 1: ogc-common-core"]
@@ -69,6 +70,7 @@ flowchart TD
     SEC_USERS --> SEC_CTX
     SEC_SCOPE --> SEC_CTX
 
+```
 
 ---
 
@@ -123,9 +125,11 @@ Wrapper app (step 5)
 
 ---
 
+```mermaid
+
 flowchart LR
     A["Wrapper App"] --> B["create_common_router()"]
-
+```
 
 ---
 
@@ -186,13 +190,13 @@ Wrapper app indirectly (through provider)
 
 
 ---
-
+```mermaid
 flowchart LR
     subgraph Core
         A["ProcessRegistry"] --> B["create_processes_router()"]
         B --> C["/processes routes"]
     end
-
+```
 
 ---
 
@@ -237,13 +241,13 @@ Admin SQL breakout
 
 
 ---
-
+```mermaid
 flowchart TD
     Catalogue["catalogue.yaml"] --> Spec["GeoOpSpec"]
     Spec --> Factory["make_geoalchemy_handler()"]
     Factory --> GARegistry["create_geoalchemy2_registry()"]
     GARegistry --> GARouter["create_geoalchemy2_router()"]
-
+```
 
 ---
 
@@ -292,12 +296,12 @@ This keeps everything sane for a solo dev.
 
 
 ---
-
+```mermaid
 flowchart LR
     A["FastAPI Users"] --> B["Scope"]
     B --> C["get_process_context()"]
     C --> D["Provider Router"]
-
+```
 
 ---
 
@@ -341,13 +345,13 @@ for power users to run any PostGIS query.
 
 
 ---
-
+```mermaid
 flowchart TD
     Wrapper["wrapper-app"] --> Common["ogc-common-core"]
     Wrapper --> Provider["ogc-processes-provider-geoalchemy2"]
     Wrapper --> Security["api-sec"]
     Wrapper --> Admin["sql-eval endpoint"]
-
+```
 
 ---
 
@@ -384,6 +388,7 @@ Same pattern, endlessly reusable.
 
 # 📚 How Everything Fits Together (Full Mermaid)
 
+```mermaid
 flowchart TB
 
     subgraph S1["Step 1: ogc-common-core"]
@@ -424,7 +429,7 @@ flowchart TB
     P1 --> P3 --> G4
     G3 --> G4
     W2 --> W1
-
+```
 
 ---
 
